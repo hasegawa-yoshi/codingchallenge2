@@ -1,5 +1,6 @@
 import { Grid } from "@mui/material";
 import React from "react";
+import Location from "../../api/Location";
 import GraphComponent from "../organisms/GraphComponent";
 import HeaderComponents from "../organisms/HeaderComponents";
 import MapComponent from "../organisms/MapComponent";
@@ -14,6 +15,7 @@ const Main = () => {
       <br />
       <br />
       <h1>天気予報</h1>
+      <Location />
       <Grid
         container
         direction="row"
