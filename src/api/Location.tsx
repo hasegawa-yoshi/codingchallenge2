@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 
 const Location = () => {
-  const [lat, setLat] = useState(0);
-  const [lng, setLng] = useState(0);
+  const [lat, setLat] = useState();
+  const [lng, setLng] = useState();
   useEffect(() => {
     if (navigator.geolocation) {
       const success = (position: any) => {
