@@ -6,6 +6,7 @@ const Map = () => {
   const MapContainerStyle = {
     width: "100%",
     height: "250px",
+    zIndex: 3,
   };
   const position = new LatLng(35.282, 137.014);
   const zoom = 10;
