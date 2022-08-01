@@ -15,56 +15,12 @@ type Indaily = {
 };
 
 type WeekWeatherType = {
-  daily: [
-    Indaily,
-    Indaily,
-    Indaily,
-    Indaily,
-    Indaily,
-    Indaily,
-    Indaily,
-    Indaily
-  ];
+  daily: Indaily[];
 };
 
 const WeekWeather = () => {
   const [WeekWeather, setWeekWeather] = useState<WeekWeatherType>({
     daily: [
-      {
-        temp: { min: 0, max: 0 },
-        dt: 0,
-        weather: [{ description: "", icon: "" }],
-      },
-      {
-        temp: { min: 0, max: 0 },
-        dt: 0,
-        weather: [{ description: "", icon: "" }],
-      },
-      {
-        temp: { min: 0, max: 0 },
-        dt: 0,
-        weather: [{ description: "", icon: "" }],
-      },
-      {
-        temp: { min: 0, max: 0 },
-        dt: 0,
-        weather: [{ description: "", icon: "" }],
-      },
-      {
-        temp: { min: 0, max: 0 },
-        dt: 0,
-        weather: [{ description: "", icon: "" }],
-      },
-      {
-        temp: { min: 0, max: 0 },
-        dt: 0,
-        weather: [{ description: "", icon: "" }],
-      },
-      {
-        temp: { min: 0, max: 0 },
-        dt: 0,
-        weather: [{ description: "", icon: "" }],
-      },
       {
         temp: { min: 0, max: 0 },
         dt: 0,
