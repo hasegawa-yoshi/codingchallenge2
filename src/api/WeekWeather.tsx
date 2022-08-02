@@ -64,6 +64,7 @@ const WeekWeather = () => {
           justifyContent="center"
           textAlign="center"
           marginBottom={2}
+          key={i}
         >
           <Grid item xs={12} md={2}>
             {jpdatearr[i]}

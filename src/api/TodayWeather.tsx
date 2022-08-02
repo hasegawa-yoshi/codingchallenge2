@@ -7,28 +7,19 @@ type InWeather = {
   icon: string;
 };
 
-type Inmain = {
-  temp_max: number;
-  temp_min: number;
-};
-
 type Weather = {
-  name: string;
-  main: Inmain;
-  weather: [InWeather];
+  current: { temp: number; weather: InWeather[] };
 };
 
 const TodayWeather = () => {
   const [TodayWeather, setTodayWeather] = useState<Weather>({
-    name: "",
-    main: { temp_max: 0, temp_min: 0 },
-    weather: [{ description: "", icon: "" }],
+    current: { temp: 0, weather: [{ description: "", icon: "" }] },
   });
 
   useEffect(() => {
     async function fetchData() {
       const request = await OpenWeatherInstance.get(
-        `/weather?q=Nagoya,JP&appid=${OpenWeather_API_KEY}&lang=ja&units=metric`
+        `/onecall?lat=35&lon=137&exclude=minutely,hourly,daily,alerts&appid=${OpenWeather_API_KEY}&lang=ja&units=metric`
       );
       setTodayWeather(request.data);
       return request;
@@ -41,14 +32,12 @@ const TodayWeather = () => {
   return (
     <div style={{ margin: "auto" }}>
       <h2>今日の天気</h2>
-      <p>{TodayWeather.name}</p>
       <img
-        src={`http://openweathermap.org/img/w/${TodayWeather.weather[0].icon}.png`}
+        src={`http://openweathermap.org/img/w/${TodayWeather.current.weather[0].icon}.png`}
         alt="weather"
       />
-      <p>{TodayWeather.weather[0].description}</p>
-      <p>最高気温:{TodayWeather.main.temp_max}</p>
-      <p>最低気温:{TodayWeather.main.temp_min}</p>
+      <p>{TodayWeather.current.weather[0].description}</p>
+      <p>現在の気温:{TodayWeather.current.temp}</p>
     </div>
   );
 };
