@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const Location = () => {
+  const latlngSelector = useSelector((state: any) => state.LatLngReducer);
+  const dispatch = useDispatch();
+
+  console.log(latlngSelector);
+
   const [lat, setLat] = useState();
   const [lng, setLng] = useState();
   useEffect(() => {
@@ -22,6 +28,20 @@ const Location = () => {
       alert("現在位置を取得できません");
     }
   }, [lat, lng]);
+
+  useEffect(() => {
+    const latlngfunction = () => {
+      dispatch({
+        type: "LAT_LNG",
+        payload: {
+          lat: lat,
+          lng: lng,
+        },
+      });
+    };
+    latlngfunction();
+  }, [lat, lng, dispatch]);
+
   return (
     <div>
       <h3>現在地</h3>
