@@ -12,6 +12,7 @@ import {
 } from "chart.js";
 import { OneCallOpenWeatherInstance } from "./axios";
 import { OpenWeather_API_KEY } from "./ApiKeys";
+import { useSelector } from "react-redux";
 
 type Inhourly = {
   temp: number;
@@ -22,20 +23,22 @@ type TempType = {
 };
 
 const Graph = () => {
+  const latlngSelector = useSelector((state: any) => state.LatLngReducer);
+
   const [hourtemp, setHourTemp] = useState<TempType>();
 
   useEffect(() => {
     async function fetchData() {
       const request = await OneCallOpenWeatherInstance.get(
-        `/onecall?lat=35&lon=137&exclude=current,minutely,daily,alerts&appid=${OpenWeather_API_KEY}&lang=ja&units=metric`
+        `/onecall?lat=${latlngSelector.lat}&lon=${latlngSelector.lng}&exclude=current,minutely,daily,alerts&appid=${OpenWeather_API_KEY}&lang=ja&units=metric`
       );
       setHourTemp(request.data);
       return request;
     }
     fetchData();
-  }, []);
+  }, [latlngSelector]);
 
-  console.log(hourtemp?.hourly[0].temp);
+  console.log(hourtemp?.hourly);
 
   Chart.register(
     CategoryScale,

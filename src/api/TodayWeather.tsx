@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { OpenWeather_API_KEY } from "./ApiKeys";
 import { OpenWeatherInstance } from "./axios";
 
@@ -12,6 +13,8 @@ type Weather = {
 };
 
 const TodayWeather = () => {
+  const latlngSelector = useSelector((state: any) => state.LatLngReducer);
+
   const [TodayWeather, setTodayWeather] = useState<Weather>({
     current: { temp: 0, weather: [{ description: "", icon: "" }] },
   });
@@ -19,13 +22,13 @@ const TodayWeather = () => {
   useEffect(() => {
     async function fetchData() {
       const request = await OpenWeatherInstance.get(
-        `/onecall?lat=35&lon=137&exclude=minutely,hourly,daily,alerts&appid=${OpenWeather_API_KEY}&lang=ja&units=metric`
+        `/onecall?lat=${latlngSelector.lat}&lon=${latlngSelector.lng}&exclude=minutely,hourly,daily,alerts&appid=${OpenWeather_API_KEY}&lang=ja&units=metric`
       );
       setTodayWeather(request.data);
       return request;
     }
     fetchData();
-  }, []);
+  }, [latlngSelector]);
 
   console.log(TodayWeather);
 

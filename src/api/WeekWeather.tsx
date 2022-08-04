@@ -1,5 +1,6 @@
 import { Grid, Hidden } from "@mui/material";
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { OpenWeather_API_KEY } from "./ApiKeys";
 import { OneCallOpenWeatherInstance } from "./axios";
 
@@ -19,6 +20,8 @@ type WeekWeatherType = {
 };
 
 const WeekWeather = () => {
+  const latlngSelector = useSelector((state: any) => state.LatLngReducer);
+
   const [WeekWeather, setWeekWeather] = useState<WeekWeatherType>({
     daily: [
       {
@@ -32,13 +35,13 @@ const WeekWeather = () => {
   useEffect(() => {
     async function fetchData() {
       const request = await OneCallOpenWeatherInstance.get(
-        `/onecall?lat=35&lon=137&exclude=current,minutely,hourly,alerts&appid=${OpenWeather_API_KEY}&lang=ja&units=metric`
+        `/onecall?lat=${latlngSelector.lat}&lon=${latlngSelector.lng}&exclude=current,minutely,hourly,alerts&appid=${OpenWeather_API_KEY}&lang=ja&units=metric`
       );
       setWeekWeather(request.data);
       return request;
     }
     fetchData();
-  }, []);
+  }, [latlngSelector]);
 
   console.log(WeekWeather);
 

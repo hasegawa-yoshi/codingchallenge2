@@ -7,8 +7,8 @@ const Location = () => {
 
   console.log(latlngSelector);
 
-  const [lat, setLat] = useState();
-  const [lng, setLng] = useState();
+  const [lat, setLat] = useState(-35);
+  const [lng, setLng] = useState(135);
   useEffect(() => {
     if (navigator.geolocation) {
       const success = (position: any) => {
@@ -45,8 +45,8 @@ const Location = () => {
   return (
     <div>
       <h3>現在地</h3>
-      <p>緯度：{lat}</p>
-      <p>経度：{lng}</p>
+      <p>緯度：{latlngSelector.lat}</p>
+      <p>経度：{latlngSelector.lng}</p>
     </div>
   );
 };
