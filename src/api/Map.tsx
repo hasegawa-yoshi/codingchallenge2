@@ -1,4 +1,5 @@
-import { LatLng } from "leaflet";
+//import { LatLng, LatLngLiteral } from "leaflet";
+import { LatLngLiteral } from "leaflet";
 import React, { useEffect, useState } from "react";
 import { MapContainer, TileLayer } from "react-leaflet";
 import { useSelector } from "react-redux";
@@ -9,13 +10,15 @@ const Map = () => {
   const [lat, setLat] = useState(35);
   const [lng, setLng] = useState(135);
 
-  const [position, setPosition] = useState(new LatLng(lat, lng));
+  //const position2: LatLngLiteral = {lat: 35, lng: 135}
+
+  const [position, setPosition] = useState<LatLngLiteral>();
 
   useEffect(() => {
     setLat(latlngSelector.lat);
     setLng(latlngSelector.lng);
     console.log(lat);
-    setPosition(new LatLng(lat, lng));
+    setPosition({ lat: lat, lng: lng });
   }, [lat, lng, latlngSelector.lat, latlngSelector.lng]);
 
   const MapContainerStyle = {
