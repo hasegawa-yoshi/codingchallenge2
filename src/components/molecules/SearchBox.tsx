@@ -1,5 +1,6 @@
 import { Grid } from "@mui/material";
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 import PrimaryButton from "../atoms/PrimaryButton";
 import PrimaryTextField from "../atoms/PrimaryTextField";
@@ -10,10 +11,13 @@ const SearchBox = () => {
   const onChangeText = (e: React.ChangeEvent<HTMLInputElement>) =>
     setText(e.target.value);
 
+  const history = useHistory();
+
   const onClickSearchButton = () => {
     if (!text) return;
 
     setText("");
+    history.push({ pathname: "/search", search: text });
   };
 
   return (
