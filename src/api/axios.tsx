@@ -7,3 +7,5 @@ export const OpenWeatherInstance = axios.create({
 export const OneCallOpenWeatherInstance = axios.create({
   baseURL: "http://api.openweathermap.org/data/2.5",
 });
+
+export const geocodingInstance = axios.create();
