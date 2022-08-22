@@ -3,13 +3,17 @@ import "./App.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Main from "./components/pages/Main ";
 import Search from "./components/pages/Search";
+import { useSelector } from "react-redux";
+import Loading from "./components/pages/Loading ";
 
 function App() {
+  const latlngSelector = useSelector((state: any) => state.LatLngReducer);
+
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
-          <Main />
+          {latlngSelector.lat === 999 ? <Loading /> : <Main />}
         </Route>
         <Route path="/search">
           <Search />

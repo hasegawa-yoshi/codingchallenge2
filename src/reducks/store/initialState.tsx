@@ -1,4 +1,4 @@
 export const LatLngInitialState = {
-  lat: -35,
-  lng: 135,
+  lat: 999,
+  lng: 999,
 };

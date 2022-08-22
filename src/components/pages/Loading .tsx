@@ -1,9 +1,8 @@
-//import React, { useEffect, useState } from "react";
-import { /*useDispatch,*/ useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-const Location = () => {
+const Loading = () => {
   const latlngSelector = useSelector((state: any) => state.LatLngReducer);
-  /*
   const dispatch = useDispatch();
 
   console.log(latlngSelector);
@@ -42,15 +41,8 @@ const Location = () => {
     };
     latlngfunction();
   }, [lat, lng, dispatch]);
-  */
 
-  return (
-    <div>
-      <h3>現在地</h3>
-      <p>緯度：{latlngSelector.lat}</p>
-      <p>経度：{latlngSelector.lng}</p>
-    </div>
-  );
+  return <div>Loading </div>;
 };
 
-export default Location;
+export default Loading;
