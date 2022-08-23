@@ -1,10 +1,11 @@
 /* eslint-disable*/
 
-import { Grid } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { geocodingInstance } from "../../api/axios";
+import PrimaryButton from "../atoms/PrimaryButton";
 import GraphComponent from "../organisms/GraphComponent";
 import HeaderComponents from "../organisms/HeaderComponents";
 import MapComponent from "../organisms/MapComponent";
@@ -22,6 +23,8 @@ const Search = () => {
   const latlngSelector = useSelector((state: any) => state.LatLngReducer);
 
   const dispatch = useDispatch();
+
+  const history = useHistory();
 
   const presearchword = useLocation().search;
 
@@ -46,6 +49,7 @@ const Search = () => {
       const request = await geocodingInstance.get(
         `https://msearch.gsi.go.jp/address-search/AddressSearch?q=${searchword}`
       );
+      console.log(request);
       setLocdata(request.data);
       const latlngfunction = () => {
         dispatch({
@@ -56,6 +60,9 @@ const Search = () => {
           },
         });
       };
+      if (request.data.length === 0) {
+        history.push("/error");
+      }
       latlngfunction();
       return request;
     }
@@ -66,6 +73,11 @@ const Search = () => {
   console.log(locdata[0].geometry.coordinates[0]);
   console.log(locdata[0].properties.title);
   console.log(latlngSelector);
+
+  const onClickReturnButton = () => {
+    history.push("/");
+    window.location.reload();
+  };
 
   return (
     <div className="App">
@@ -79,6 +91,9 @@ const Search = () => {
           <br />
           <h1>天気予報</h1>
           <p>{locdata[0].properties.title}の天気を表示しています</p>
+          <Button onClick={onClickReturnButton} variant="outlined">
+            現在地に戻る
+          </Button>
           <Grid
             container
             direction="row"
@@ -114,5 +129,4 @@ const Search = () => {
     </div>
   );
 };
-
 export default Search;

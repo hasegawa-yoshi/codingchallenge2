@@ -42,7 +42,11 @@ const Loading = () => {
     latlngfunction();
   }, [lat, lng, dispatch]);
 
-  return <div>Loading </div>;
+  return (
+    <div className="App">
+      <p>Loading..</p>
+    </div>
+  );
 };
 
 export default Loading;
