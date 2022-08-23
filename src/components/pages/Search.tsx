@@ -28,8 +28,18 @@ const Search = () => {
   const searchword = presearchword.slice(1);
 
   const [locdata, setLocdata] = useState<geo>([
-    { geometry: { coordinates: [35, 135] }, properties: { title: "" } },
+    { geometry: { coordinates: [999, 999] }, properties: { title: "" } },
   ]);
+
+  /*
+  const [load, setLoad] = useState(false);
+
+  console.log(load);
+
+  setTimeout(() => {
+    setLoad(true);
+  }, 1000);
+  */
 
   useEffect(() => {
     async function fetchData() {
@@ -59,42 +69,48 @@ const Search = () => {
 
   return (
     <div className="App">
-      <HeaderComponents />
-      <br />
-      <br />
-      <br />
-      <h1>天気予報</h1>
-      <p>{locdata[0].properties.title}の天気を表示しています</p>
-      <Grid
-        container
-        direction="row"
-        justifyContent="center"
-        alignItems="center"
-        padding={2}
-      >
-        <Grid item xs={5.9}>
-          <TodayWeatherComponent />
-        </Grid>
-        <Grid item xs={0.2}></Grid>
-        <Grid item xs={5.9}>
-          <MapComponent />
-        </Grid>
-      </Grid>
-      <Grid
-        container
-        direction="row"
-        justifyContent="center"
-        alignItems="center"
-        padding={2}
-      >
-        <Grid item xs={6.9}>
-          <GraphComponent />
-        </Grid>
-        <Grid item xs={0.2}></Grid>
-        <Grid item xs={4.9}>
-          <WeekWeatherComponent />
-        </Grid>
-      </Grid>
+      {latlngSelector.lat === 999 ? (
+        <p>loading</p>
+      ) : (
+        <div>
+          <HeaderComponents />
+          <br />
+          <br />
+          <br />
+          <h1>天気予報</h1>
+          <p>{locdata[0].properties.title}の天気を表示しています</p>
+          <Grid
+            container
+            direction="row"
+            justifyContent="center"
+            alignItems="center"
+            padding={2}
+          >
+            <Grid item xs={5.9}>
+              <TodayWeatherComponent />
+            </Grid>
+            <Grid item xs={0.2}></Grid>
+            <Grid item xs={5.9}>
+              <MapComponent />
+            </Grid>
+          </Grid>
+          <Grid
+            container
+            direction="row"
+            justifyContent="center"
+            alignItems="center"
+            padding={2}
+          >
+            <Grid item xs={6.9}>
+              <GraphComponent />
+            </Grid>
+            <Grid item xs={0.2}></Grid>
+            <Grid item xs={4.9}>
+              <WeekWeatherComponent />
+            </Grid>
+          </Grid>
+        </div>
+      )}
     </div>
   );
 };

@@ -18,6 +18,7 @@ const SearchBox = () => {
 
     setText("");
     history.push({ pathname: "/search", search: text });
+    window.location.reload();
   };
 
   return (
