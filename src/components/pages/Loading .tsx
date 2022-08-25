@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import IMG from "../../gif/loadingpikachu.gif";
+
 const Loading = () => {
   const latlngSelector = useSelector((state: any) => state.LatLngReducer);
   const dispatch = useDispatch();
@@ -44,7 +46,10 @@ const Loading = () => {
 
   return (
     <div className="App">
-      <p>Loading..</p>
+      <br />
+      <br />
+      <h2>Loading..</h2>
+      <img src={IMG} alt="Loading" />
     </div>
   );
 };

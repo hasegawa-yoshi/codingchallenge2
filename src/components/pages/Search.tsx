@@ -11,6 +11,7 @@ import HeaderComponents from "../organisms/HeaderComponents";
 import MapComponent from "../organisms/MapComponent";
 import TodayWeatherComponent from "../organisms/TodayWeatherComponent";
 import WeekWeatherComponent from "../organisms/WeekWeatherComponent";
+import Loading from "./Loading ";
 
 type geoob = {
   geometry: { coordinates: [number, number] };
@@ -82,7 +83,7 @@ const Search = () => {
   return (
     <div className="App">
       {latlngSelector.lat === 999 ? (
-        <p>loading</p>
+        <Loading />
       ) : (
         <div>
           <HeaderComponents />
@@ -94,33 +95,21 @@ const Search = () => {
           <Button onClick={onClickReturnButton} variant="outlined">
             現在地に戻る
           </Button>
-          <Grid
-            container
-            direction="row"
-            justifyContent="center"
-            alignItems="center"
-            padding={2}
-          >
-            <Grid item xs={5.9}>
+          <Grid container direction="row" justifyContent="center" padding={2}>
+            <Grid item xs={12} sm={5.9} paddingBottom={2}>
               <TodayWeatherComponent />
             </Grid>
-            <Grid item xs={0.2}></Grid>
-            <Grid item xs={5.9}>
+            <Grid item sm={0.2}></Grid>
+            <Grid item xs={12} sm={5.9}>
               <MapComponent />
             </Grid>
           </Grid>
-          <Grid
-            container
-            direction="row"
-            justifyContent="center"
-            alignItems="center"
-            padding={2}
-          >
-            <Grid item xs={6.9}>
+          <Grid container direction="row" justifyContent="center" padding={2}>
+            <Grid item xs={12} sm={6.9} paddingBottom={2}>
               <GraphComponent />
             </Grid>
-            <Grid item xs={0.2}></Grid>
-            <Grid item xs={4.9}>
+            <Grid item sm={0.2}></Grid>
+            <Grid item xs={12} sm={4.9}>
               <WeekWeatherComponent />
             </Grid>
           </Grid>

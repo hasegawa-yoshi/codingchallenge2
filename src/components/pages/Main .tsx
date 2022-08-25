@@ -16,33 +16,21 @@ const Main = () => {
       <br />
       <h1>天気予報</h1>
       <Location />
-      <Grid
-        container
-        direction="row"
-        justifyContent="center"
-        alignItems="center"
-        padding={2}
-      >
-        <Grid item xs={5.9}>
+      <Grid container direction="row" justifyContent="center" padding={2}>
+        <Grid item xs={12} sm={5.9} paddingBottom={2}>
           <TodayWeatherComponent />
         </Grid>
-        <Grid item xs={0.2}></Grid>
-        <Grid item xs={5.9}>
+        <Grid item sm={0.2}></Grid>
+        <Grid item xs={12} sm={5.9}>
           <MapComponent />
         </Grid>
       </Grid>
-      <Grid
-        container
-        direction="row"
-        justifyContent="center"
-        alignItems="center"
-        padding={2}
-      >
-        <Grid item xs={6.9}>
+      <Grid container direction="row" justifyContent="center" padding={2}>
+        <Grid item xs={12} sm={6.9} paddingBottom={2}>
           <GraphComponent />
         </Grid>
-        <Grid item xs={0.2}></Grid>
-        <Grid item xs={4.9}>
+        <Grid item sm={0.2}></Grid>
+        <Grid item xs={12} sm={4.9}>
           <WeekWeatherComponent />
         </Grid>
       </Grid>

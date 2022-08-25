@@ -69,7 +69,7 @@ const WeekWeather = () => {
           marginBottom={2}
           key={i}
         >
-          <Grid item xs={12} md={2}>
+          <Grid item xs={12} md={3} fontWeight="bold">
             {jpdatearr[i]}
           </Grid>
           <Grid item xs={2}>

@@ -88,13 +88,14 @@ const Graph = () => {
         position: "top" as const,
       },
       title: {
-        display: true,
+        display: false,
         text: "1時間毎の予想気温",
       },
     },
   };
   return (
     <div style={{ margin: "auto", width: "100%" }}>
+      <h2>今後1時間毎の予想気温</h2>
       <Line data={graphData} options={options} />
     </div>
   );
