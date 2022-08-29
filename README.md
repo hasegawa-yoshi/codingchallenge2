@@ -1,18 +1,20 @@
-# Getting Started with Create React App
+# 天気予報アプリケーション
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+天気予報のアプリケーションです。
+その時点での天気、地図、1 時間毎の気温変化、週間天気予報を表示します。
+現在地の情報、または検索した場所の情報を表示します。
 
-## Available Scripts
+React と TypeScript で開発されています。
+
+## プロジェクトで使用可能なスクリプト
 
 In the project directory, you can run:
 
 ### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+アプリケーションを開発モードで起動することができます。
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+yarn start 実行後、http://localhost:3000 でアプリケーションを開くことができます。
 
 ### `yarn test`
 
@@ -39,8 +41,20 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## 使用している API
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+OpenWeatherAPI
+https://openweathermap.org/
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+国土地理院の API（地名から緯度経度を出してくれる）
+https://msearch.gsi.go.jp/address-search/AddressSearch?q=文字列
+
+## 準備
+
+ディレクトリの直下でパッケージをインストールします。
+
+yarn install
+
+パッケージのインストールが完了後、アプリケーションを起動させることができます。
+
+yarn start
